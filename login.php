@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,6 +8,11 @@
     margin: auto; 
     margin-top: 200px;
    }
+   body{ 
+background-image:url(logo.png); 
+background-repeat: no-repeat; 
+background-position: 920px 550px; 
+}
   </style>
 </head>
 <body>
@@ -44,8 +48,9 @@ $r = mysqli_fetch_assoc($result);
 if(empty($r))
 echo"<font color='red'>User not found</font>";
 else{
+$id_user = $r["id_users"];	
 $isAdmin=$r["isAdmin"];
-$url = "catalogs.php?isAdmin=$isAdmin";
+$url = "catalogs.php?isAdmin=$isAdmin,id_user=$id_user";
     echo "<meta http-equiv=refresh content=0;URL=$url>";
 }
 
@@ -62,4 +67,3 @@ mysqli_close($conn);
 </form>
 </body>
 </html>
-
