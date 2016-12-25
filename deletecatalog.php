@@ -10,41 +10,50 @@ text-align: center;}
 table
 {
  width: 40%; 
+ top: 40%;
  font-size:20pt;
  margin: auto;
+}
+body{ 
+background-image:url(logo.png); 
+background-repeat: no-repeat; 
+background-position: 920px 550px; 
 }
 </style>
 </head>
 <body>
 <form method="post">
-<button type="submit" name="back_button" align="left"  style="width:90;height:25; margin-left:20px;margin-top:5px;" ><a href='catalogs.php'>Back</a></button>
-
 <div class="main">
 <?
 $isAdmin=$_GET["isAdmin"];?>
 <table>
 <tr>
-<td>Id_catalog:</td>
+<td align="right">Id_catalog:</td>
  <td><input type="text" name="adding1" maxlength="4" size="20"></td>
- <td><button type="submit" name="delete_button" style="width:90;height:25" >Delete</button></td></tr>
+ <td><button type="submit" name="delete_button" align="left" style="width:90;height:25; left:20pt; top : 20pt;">Delete</button></td></tr>
 
 </table>
-<?php if ($_SERVER["REQUEST_METHOD"] == "POST") 
- {if (isset($_POST['delete_button'])) 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
  {
-	 $delete_id=$_POST['adding1'];
+	 if (isset($_POST['delete_button'])) 
+     {
+	   $delete_id=$_POST['adding1'];
 	 
      
-	 if(is_integer($delete_id))
-	{
+	   if(is_integer($delete_id))
+	   {
 		require("connect.php");
 		$sql = "DELETE FROM catalog_tour WHERE id_catalog='$delete_id'";
 		$result = mysqli_query($conn, $sql);
 		mysqli_close($conn);
 		echo "<meta http-equiv=refresh content=0>";
- }}}
- else 
- echo"<font color='red' size=3pt>Incorrect data!</font>";
+      }
+      else 
+        echo"<font color='red' size=3pt>Incorrect data!</font>";
+     }
+ }
+ 
 
 
 
@@ -55,5 +64,4 @@ $url = "catalogs.php?isAdmin=$isAdmin";
 </form>
 </body>
 </html>
-
  
