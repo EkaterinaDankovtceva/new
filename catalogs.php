@@ -6,30 +6,36 @@
 .main{
 margin: auto; 
 font-size:20pt;
-text-align: center;}
+}
 table
 {
  width: 40%; 
  font-size:20pt;
  margin: auto;
- 
 
+}
+td {
+text-align: center; }
+body{ 
+background-image:url(logo.png); 
+background-repeat: no-repeat; 
+background-position: 920px 550px; 
 }
 </style>
 </head>
 <body>
 <form method="post">
-<button type="submit" name="back_button" align="left"  style="width:90;height:25; margin-left:20px;margin-top:5px;" ><a href='login.php'>Back</a></button>
+
 
 <div class="main">
 <br>You can see all catalogs:</br>
 <?php
 $isAdmin=$_GET["isAdmin"];
-
+$id_user = $_GET["id_user"];
 if($isAdmin==1)
 {?>
-<button type="submit" name="add_button" align="left"  style="width:90;height:25; margin-left:20px;margin-top:40px;" ><a href='addcatalog.php'>AddCatalog</a></button>
-<button type="submit" name="delete_button" align="left"  style="width:90;height:25; margin-left:20px;margin-top:75px;" ><a href='deletecatalog.php'>DeleteCatalog</a></button>
+<button type="submit" name="add_button" align="left"  style="width:90;height:25;left:20pt;top : 20pt;" ><a href='addcatalog.php'>AddCatalog</a></button>
+<button type="submit" name="delete_button" align="left"  style="width:90;height:25;left:20pt;top : 60pt;" ><a href='deletecatalog.php'>DeleteCatalog</a></button>
 <?}
 
 require("connect.php");
@@ -43,14 +49,11 @@ $nameCatalog=$r["nameCatalog"];
      ?>
 	 <tr>
 	 <td>
-	<? echo("<br><a href='tours.php?isAdmin=$isAdmin&id=$id_catalog'>$id_catalog</a>");?>
-	 </td>
-	 <td><?
-	 echo $nameCatalog;?>
-	 </td>
+	<? echo("<br><a href='tours.php?isAdmin=$isAdmin,id=$id_catalog, id_user=$id_user'>$nameCatalog</a>");?>
+	 </td>	 
 	 </tr>
 	<? }?>
-</table>	 
+</table>	
 <?	 
  mysqli_close($conn);
  
