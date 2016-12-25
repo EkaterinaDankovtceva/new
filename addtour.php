@@ -10,43 +10,49 @@ text-align: center;}
 table
 {
  width: 40%; 
- font-size:20pt;
+ font-size:20pt; 
  margin: auto;
+}
+
+body{ 
+background-image:url(logo.png); 
+background-repeat: no-repeat; 
+background-position: 920px 550px; 
 }
 </style>
 </head>
 <body>
 <form method="post">
 <div class="main">
-<button type="submit" name="back_button" align="left"  style="width:90;height:25; margin-left:20px;margin-top:5px;" ><a href='catalogs.php'>Back</a></button>
-<button type="submit" name="add_button" align="left"  style="width:90;height:25; margin-left:100px;margin-top:50px;" >Add</button>
+
 
 <?
 $isAdmin=$_GET["isAdmin"];?>
 <table>
 <tr>
-<td>Id_tour:</td>
+<td align="right"> Id_tour:</td>
  <td><input type="text" name="delite1" maxlength="4" size="20"></td></tr>
 <tr>
-<td>country:</td>
+<td align="right">country:</td>
  <td><input type="text" name="delite2" maxlength="4" size="20"></td></tr>
  <tr>
-<td>hotel:</td>
+<td align="right">hotel:</td>
  <td><input type="text" name="delite3" maxlength="4" size="20"></td></tr>
  <tr>
-<td>nutrition:</td>
+<td align="right">nutrition:</td>
  <td><input type="text" name="delite4" maxlength="4" size="20"></td></tr>
+ <td><button type="submit" name="add_button" align="left" style="width:90;height:25; left:20pt; top : 20pt;">Add</button></td>
  <tr>
-<td>cost:</td>
+<td align="right">cost:</td>
  <td><input type="text" name="delite5" maxlength="4" size="20"></td></tr>
  <tr>
-<td>data:</td>
+<td align="right">data:</td>
  <td><input type="text" name="delite6" maxlength="4" size="20"></td></tr>
  <tr>
-<td>transportation:</td>
+<td align="right">transportation:</td>
  <td><input type="text" name="delite7" maxlength="4" size="20"></td></tr>
  <tr>
-<td>id_catalog:</td>
+<td align="right">id_catalog:</td>
  <td><input type="text" name="delite8" maxlength="4" size="20"></td></tr>
 </table>
 <?php if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -70,11 +76,12 @@ $isAdmin=$_GET["isAdmin"];?>
 		$result = mysqli_query($conn, $sql);
 		mysqli_close($conn);
 		echo "<meta http-equiv=refresh content=0>";
+	}
+	else 
+       echo"<font color='red' size=3pt>Incorrect data!</font>";
  }
  }
- }
- else 
- echo"<font color='red' size=3pt>Incorrect data!</font>";
+ 
 
 
 
